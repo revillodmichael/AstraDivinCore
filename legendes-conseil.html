@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Légendes Conseil</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .hero { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    input { padding: 15px; font-size: 1.5rem; width: 60%; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #heroes { margin-top: 30px; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Légendes Conseil ❤️</h1>
+  <div class="hero">
+    <input type="text" id="nom" placeholder="Nom du héros..." />
+    <button onclick="nommer()">NOMMER</button>
+    <div id="heroes"></div>
+  </div>
+
+  <script>
+    let heros = [];
+
+    function nommer() {
+      const input = document.getElementById('nom');
+      const nom = input.value.trim();
+      if (nom) {
+        heros.push(nom);
+        input.value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const list = document.getElementById('heroes');
+      list.innerHTML = '';
+      heros.forEach(h => {
+        const p = document.createElement('p');
+        p.textContent = `🦸 ${h}`;
+        list.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
