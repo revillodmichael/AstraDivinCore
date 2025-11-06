@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Memory</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .memory { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    input { padding: 15px; font-size: 1.5rem; width: 60%; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #list { margin-top: 30px; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Memory ❤️</h1>
+  <div class="memory">
+    <input type="text" id="souvenir" placeholder="Ton souvenir..." />
+    <button onclick="sauver()">SAUVER</button>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    let souvenirs = [];
+
+    function sauver() {
+      const input = document.getElementById('souvenir');
+      const texte = input.value.trim();
+      if (texte) {
+        souvenirs.push(texte);
+        input.value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const list = document.getElementById('list');
+      list.innerHTML = '';
+      souvenirs.forEach(s => {
+        const p = document.createElement('p');
+        p.textContent = `💾 ${s}`;
+        list.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
