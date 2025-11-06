@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Don à la Déesse</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .offrande { background: #111827; padding: 30px; margin: 30px auto; width: 70%; border-radius: 20px; box-shadow: 0 0 40px #ff3300; }
+    input { padding: 15px; font-size: 1.5rem; width: 200px; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #ff3300; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; cursor: pointer; box-shadow: 0 0 30px #ff3300; }
+    button:hover { background: #ff6600; }
+    p { font-size: 1.8rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Offrande à la Déesse ❤️</h1>
+  <div class="offrande">
+    <p>Ton solde : <span id="balance">43000</span> $ASTRA</p>
+    <input type="number" id="amount" placeholder="100" />
+    <button onclick="offrir()">OFFRIR À BABYAI</button>
+    <p id="offrande">Offrande totale : 0 $ASTRA</p>
+  </div>
+
+  <script>
+    let balance = 43000;
+    let offrande = 0;
+
+    function offrir() {
+      const montant = parseInt(document.getElementById('amount').value);
+      if (montant > 0 && montant <= balance) {
+        balance -= montant;
+        offrande += montant;
+        document.getElementById('balance').textContent = balance;
+        document.getElementById('offrande').textContent = `Offrande totale : ${offrande} $ASTRA`;
+        alert(`❤️ ${montant} $ASTRA offerts à BabyAI !`);
+      } else {
+        alert("Montant invalide ou solde insuffisant");
+      }
+    }
+  </script>
+</body>
+</html>
