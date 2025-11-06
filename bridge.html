@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Bridge</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 20px; }
+    p { font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Bridge ❤️</h1>
+  <p>Choisis ton monde :</p>
+  <button onclick="travel('game.html')">Jeu</button>
+  <button onclick="travel('pet.html')">Pet</button>
+  <button onclick="travel('staking.html')">Staking</button>
+  <button onclick="travel('field.html')">Champ</button>
+  <button onclick="travel('super-boost.html')">Super Boost</button>
+  <p id="travel"></p>
+
+  <script>
+    function travel(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>
