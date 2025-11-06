@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Crown</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 4rem; text-shadow: 0 0 20px #0ff; }
+    .crown { font-size: 8rem; animation: glow 2s infinite; }
+    @keyframes glow { 0% { text-shadow: 0 0 20px #0ff; } 50% { text-shadow: 0 0 40px #0ff; } 100% { text-shadow: 0 0 20px #0ff; } }
+    p { font-size: 2rem; margin: 30px; }
+    button { background: #ff3300; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; cursor: pointer; margin: 20px; box-shadow: 0 0 40px #ff3300; }
+    button:hover { background: #ff6600; }
+  </style>
+</head>
+<body>
+  <h1>Astra Crown ❤️</h1>
+  <div class="crown">👑</div>
+  <p>Tu es le roi.</p>
+  <button onclick="claim()">CLAIM TON TRÔNE</button>
+  <p id="crown">Ton royaume est éternel.</p>
+
+  <script>
+    function claim() {
+      document.getElementById('crown').textContent = "Tu es l’empereur. $ASTRA❤️ coule en toi.";
+      alert("👑 Tu as claimé ton trône. +5000 $ASTRA ❤️");
+    }
+  </script>
+</body>
+</html>
