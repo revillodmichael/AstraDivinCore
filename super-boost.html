@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Super Boost</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 20vh; }
+    h1 { font-size: 4rem; text-shadow: 0 0 20px #0ff; }
+    button { background: #ff3300; color: white; padding: 30px 60px; font-size: 2.5rem; border-radius: 30px; cursor: pointer; margin: 40px; box-shadow: 0 0 40px #ff3300; }
+    button:hover { background: #ff6600; }
+    p { font-size: 2rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>SUPER BOOST ❤️</h1>
+  <button onclick="superBoost()">CLIQUE ICI</button>
+  <p id="reward">Récompense : 0 $ASTRA</p>
+
+  <script>
+    let total = 0;
+    function superBoost() {
+      const gain = 1000;
+      total += gain;
+      document.getElementById('reward').textContent = `Récompense : ${total} $ASTRA`;
+      alert(`+${gain} $ASTRA mintés !`);
+    }
+  </script>
+</body>
+</html>
