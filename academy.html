@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Academy</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .course { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Academy ❤️</h1>
+
+  <div class="course">
+    <p>Quantum Staking (Niveau 1)</p>
+    <button onclick="learn('Quantum Staking')">Apprendre - 5000 $ASTRA</button>
+  </div>
+
+  <div class="course">
+    <p>Multivers Mastery (Niveau 2)</p>
+    <button onclick="learn('Multivers Mastery')">Apprendre - 10000 $ASTRA</button>
+  </div>
+
+  <div class="course">
+    <p>Empire Building (Niveau 3)</p>
+    <button onclick="learn('Empire Building')">Apprendre - 20000 $ASTRA</button>
+  </div>
+
+  <p id="level">Niveau : 0</p>
+  <p id="balance">Ton solde : 178000 $ASTRA</p>
+
+  <script>
+    let level = 0;
+    let balance = 178000;
+
+    function learn(course) {
+      const cost = course === 'Quantum Staking' ? 5000 : course === 'Multivers Mastery' ? 10000 : 20000;
+      if (balance >= cost) {
+        balance -= cost;
+        level++;
+        document.getElementById('level').textContent = `Niveau : ${level}`;
+        document.getElementById('balance').textContent = `Ton solde : ${balance} $ASTRA`;
+        alert(`Cours terminé : ${course} ! Niveau +1`);
+      } else {
+        alert("Pas assez de $ASTRA !");
+      }
+    }
+  </script>
+</body>
+</html>
