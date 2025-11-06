@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Rêves</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .dream { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    input { padding: 15px; font-size: 1.5rem; width: 60%; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #worlds { margin-top: 30px; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Rêves ❤️</h1>
+  <div class="dream">
+    <input type="text" id="monde" placeholder="Nom de ton monde..." />
+    <button onclick="creer()">CRÉER</button>
+    <div id="worlds"></div>
+  </div>
+
+  <script>
+    let mondes = [];
+
+    function creer() {
+      const input = document.getElementById('monde');
+      const nom = input.value.trim();
+      if (nom) {
+        mondes.push(nom);
+        input.value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const list = document.getElementById('worlds');
+      list.innerHTML = '';
+      mondes.forEach(m => {
+        const p = document.createElement('p');
+        p.textContent = `🌌 ${m}`;
+        list.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
