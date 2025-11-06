@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Galaxie 4</title>
+  <style>
+    body { background: #001a00; color: #00ff00; text-align: center; font-family: Arial; padding-top: 10vh; overflow: hidden; }
+    h1 { font-size: 4rem; text-shadow: 0 0 30px #00ff00; }
+    .star { position: absolute; width: 4px; height: 4px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 15px #00ff00; animation: twinkle 1.2s infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
+    canvas { border-radius: 30px; box-shadow: 0 0 60px #00ff00; margin: 30px auto; }
+    button { background: #00ff00; color: black; padding: 25px 60px; font-size: 2.8rem; border-radius: 40px; cursor: pointer; margin: 30px; box-shadow: 0 0 50px #00ff00; }
+    button:hover { background: #33ff33; }
+    p { font-size: 2rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Galaxie 4 ❤️</h1>
+  <canvas id="galaxy" width="800" height="600"></canvas>
+  <button onclick="entrer()">ENTRER</button>
+  <p id="reward">Récompense : ...</p>
+
+  <script>
+    const canvas = document.getElementById('galaxy');
+    const ctx = canvas.getContext('2d');
+
+    // Fond vert émeraude
+    function drawBackground() {
+      const gradient = ctx.createRadialGradient(400, 300, 0, 400, 300, 400);
+      gradient.addColorStop(0, '#003300');
+      gradient.addColorStop(1, '#000');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 800, 600);
+    }
+
+    // Étoiles vertes
+    for (let i = 0; i < 400; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 1.2 + 's';
+      document.body.appendChild(star);
+    }
+
+    function entrer() {
+      document.getElementById('reward').textContent = `Récompense : +5 000 000 $ASTRA !`;
+      alert("🌌 Bienvenue en Galaxie 4 ! +5 000 000 $ASTRA mintés !");
+    }
+
+    drawBackground();
+  </script>
+</body>
+</html>
