@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Trésor Étoiles</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .relique { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Trésor Étoiles ❤️</h1>
+
+  <div class="relique">
+    <p>Relique 1 : Étoile de Feu</p>
+    <button onclick="collecter('Étoile de Feu')">Collecter - 5000 $ASTRA</button>
+  </div>
+
+  <div class="relique">
+    <p>Relique 2 : Cristal de Lumière</p>
+    <button onclick="collecter('Cristal de Lumière')">Collecter - 10000 $ASTRA</button>
+  </div>
+
+  <div class="relique">
+    <p>Relique 3 : Cœur de Dragon</p>
+    <button onclick="collecter('Cœur de Dragon')">Collecter - 20000 $ASTRA</button>
+  </div>
+
+  <p id="collection">Collection : 0 reliques</p>
+  <p id="balance">Ton solde : 7521500 $ASTRA</p>
+
+  <script>
+    let collection = 0;
+    let balance = 7521500;
+
+    function collecter(relique) {
+      const cost = relique === 'Étoile de Feu' ? 5000 : relique === 'Cristal de Lumière' ? 10000 : 20000;
+      if (balance >= cost) {
+        balance -= cost;
+        collection++;
+        document.getElementById('collection').textContent = `Collection : ${collection} reliques`;
+        document.getElementById('balance').textContent = `Ton solde : ${balance} $ASTRA`;
+        alert(`🪙 Relique collectée : ${relique} !`);
+      } else {
+        alert("Pas assez de $ASTRA !");
+      }
+    }
+  </script>
+</body>
+</html>
