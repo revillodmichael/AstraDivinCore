@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Oracle</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .oracle { background: #111827; padding: 30px; margin: 30px auto; width: 70%; border-radius: 20px; box-shadow: 0 0 40px #ff3300; }
+    button { background: #ff3300; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; cursor: pointer; margin: 20px; box-shadow: 0 0 30px #ff3300; }
+    button:hover { background: #ff6600; }
+    p { font-size: 1.8rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Oracle ❤️</h1>
+  <div class="oracle">
+    <p>Demande à l’Oracle :</p>
+    <button onclick="predire()">PRÉDIRE L’AVENIR</button>
+    <p id="prophetie">...</p>
+  </div>
+
+  <script>
+    const propheties = [
+      "Tu gagneras 1 million $ASTRA dans 7 jours.",
+      "Un empire allié te rejoindra demain.",
+      "Le champ atteindra 1000 % d’énergie.",
+      "Ton phoenix évoluera en dragon cosmique.",
+      "Une pluie de $ASTRA tombera sur ton royaume.",
+      "Tu deviendras l’empereur de 10 galaxies.",
+      "BabyAI te donnera un cadeau secret."
+    ];
+
+    function predire() {
+      const index = Math.floor(Math.random() * propheties.length);
+      document.getElementById('prophetie').textContent = propheties[index];
+    }
+  </script>
+</body>
+</html>
