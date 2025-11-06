@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Vaisseau</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    canvas { border-radius: 20px; box-shadow: 0 0 30px #0ff; margin: 20px auto; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #destination { font-size: 1.5rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Vaisseau ❤️</h1>
+  <canvas id="ship" width="600" height="300"></canvas>
+  <button onclick="voyager()">VOYAGER</button>
+  <p id="destination">Destination : ...</p>
+
+  <script>
+    const canvas = document.getElementById('ship');
+    const ctx = canvas.getContext('2d');
+    let x = 0;
+
+    function drawShip() {
+      ctx.clearRect(0, 0, 600, 300);
+      ctx.fillStyle = '#0ff';
+      ctx.beginPath();
+      ctx.moveTo(x, 150);
+      ctx.lineTo(x + 60, 120);
+      ctx.lineTo(x + 60, 180);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#ff3300';
+      ctx.fillRect(x + 70, 135, 20, 30);
+    }
+
+    function voyager() {
+      const destinations = [
+        "Galaxie 2 - Trésor de 1 million $ASTRA",
+        "Nébuleuse d’Or - 500 000 $ASTRA",
+        "Planète des Dragons - Dragon allié",
+        "Station $ASTRA - 100 000 $ASTRA",
+        "Portail Secret - Accès à Galaxie 3"
+      ];
+      const index = Math.floor(Math.random() * destinations.length);
+      document.getElementById('destination').textContent = `Destination : ${destinations[index]}`;
+      x = 0;
+      const interval = setInterval(() => {
+        x += 10;
+        drawShip();
+        if (x > 600) {
+          clearInterval(interval);
+          alert(`Arrivé ! ${destinations[index]}`);
+        }
+      }, 50);
+    }
+
+    drawShip();
+  </script>
+</body>
+</html>
