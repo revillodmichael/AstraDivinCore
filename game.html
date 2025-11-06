@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Roulette</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; }
+    #wheel { width: 300px; height: 300px; margin: 50px auto; }
+    button { background: #6366f1; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Astra Roulette ❤️</h1>
+  <canvas id="wheel" width="300" height="300"></canvas>
+  <button onclick="spin()">TOURNE LA ROUE</button>
+  <p id="result"></p>
+
+  <script>
+    const canvas = document.getElementById('wheel');
+    const ctx = canvas.getContext('2d');
+    let rotation = 0;
+
+    function drawWheel() {
+      ctx.clearRect(0, 0, 300, 300);
+      const colors = ['#ff3300', '#0ff', '#ff0', '#0f0', '#f0f'];
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        ctx.moveTo(150, 150);
+        ctx.arc(150, 150, 140, i * 72 * Math.PI / 180, (i + 1) * 72 * Math.PI / 180);
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      }
+    }
+
+    function spin() {
+      rotation += Math.random() * 1000 + 500;
+      canvas.style.transform = `rotate(${rotation}deg)`;
+      setTimeout(() => {
+        const prize = Math.floor(Math.random() * 10) + 1;
+        document.getElementById('result').innerHTML = `🎉 Tu gagnes <b>${prize * 10} $ASTRA</b> !`;
+      }, 3000);
+    }
+
+    drawWheel();
+  </script>
+</body>
+</html>
