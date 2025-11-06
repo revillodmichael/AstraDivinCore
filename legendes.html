@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Légendes</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 4rem; text-shadow: 0 0 30px #0ff; }
+    .legend { background: #111827; padding: 30px; margin: 30px auto; width: 80%; border-radius: 20px; box-shadow: 0 0 40px #ff3300; }
+    input { padding: 20px; font-size: 2rem; width: 70%; margin: 20px; border-radius: 15px; background: #1f2937; color: white; }
+    button { background: #ff3300; color: white; padding: 25px 50px; font-size: 2.5rem; border-radius: 30px; cursor: pointer; margin: 30px; box-shadow: 0 0 50px #ff3300; }
+    button:hover { background: #ff6600; }
+    #story { margin-top: 40px; font-size: 1.8rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Légendes ❤️</h1>
+  <div class="legend">
+    <input type="text" id="titre" placeholder="Titre de ta légende..." />
+    <input type="text" id="histoire" placeholder="Ton histoire..." />
+    <button onclick="ecrire()">ÉCRIRE LA LÉGENDE</button>
+    <div id="story"></div>
+  </div>
+
+  <script>
+    let legendes = [];
+
+    function ecrire() {
+      const titre = document.getElementById('titre').value.trim();
+      const histoire = document.getElementById('histoire').value.trim();
+      if (titre && histoire) {
+        legendes.push({ titre, histoire });
+        document.getElementById('titre').value = '';
+        document.getElementById('histoire').value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const story = document.getElementById('story');
+      story.innerHTML = '';
+      legendes.forEach(l => {
+        const div = document.createElement('div');
+        div.innerHTML = `<h2 style="color: #ff3300;">📜 ${l.titre}</h2><p>${l.histoire}</p>`;
+        story.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
