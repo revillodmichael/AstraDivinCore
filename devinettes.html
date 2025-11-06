@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Devinettes</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .enigme { background: #111827; padding: 30px; margin: 30px auto; width: 70%; border-radius: 20px; box-shadow: 0 0 40px #ff3300; }
+    input { padding: 15px; font-size: 1.8rem; width: 60%; margin: 20px; border-radius: 15px; background: #1f2937; color: white; }
+    button { background: #ff3300; color: white; padding: 20px 50px; font-size: 2.5rem; border-radius: 30px; cursor: pointer; margin: 30px; box-shadow: 0 0 50px #ff3300; }
+    button:hover { background: #ff6600; }
+    p { font-size: 2rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Devinettes ❤️</h1>
+  <div class="enigme">
+    <p id="question">Clique pour commencer...</p>
+    <input type="text" id="reponse" placeholder="Ta réponse..." />
+    <button onclick="verifier()">RÉPONDRE</button>
+    <p id="resultat">...</p>
+  </div>
+
+  <script>
+    const enigmes = [
+      { q: "Je parle sans bouche et j'entends sans oreilles. Qui suis-je ?", r: "écho" },
+      { q: "Plus on me prend, plus je grandis. Qui suis-je ?", r: "trou" },
+      { q: "Je suis toujours devant toi, mais tu ne peux pas me voir. Qui suis-je ?", r: "futur" },
+      { q: "Je suis né grand, je vis petit, et je meurs vieux. Qui suis-je ?", r: "crayon" },
+      { q: "Je vole sans ailes, je pleure sans yeux. Qui suis-je ?", r: "nuage" }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function start() {
+      current = Math.floor(Math.random() * enigmes.length);
+      document.getElementById('question').textContent = enigmes[current].q;
+      document.getElementById('resultat').textContent = '';
+    }
+
+    function verifier() {
+      const input = document.getElementById('reponse');
+      const rep = input.value.trim().toLowerCase();
+      if (rep === enigmes[current].r) {
+        score++;
+        document.getElementById('resultat').textContent = `✅ Correct ! Score : ${score}`;
+        input.value = '';
+        setTimeout(start, 1500);
+      } else {
+        document.getElementById('resultat').textContent = `❌ Faux ! Essaie encore.`;
+      }
+    }
+
+    start();
+  </script>
+</body>
+</html>
