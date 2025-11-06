@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Trône</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 4rem; text-shadow: 0 0 20px #0ff; }
+    .throne { font-size: 10rem; animation: glow 3s infinite; margin: 50px; }
+    @keyframes glow { 0%, 100% { text-shadow: 0 0 30px #0ff; } 50% { text-shadow: 0 0 60px #0ff, 0 0 90px #0ff; } }
+    button { background: #ff3300; color: white; padding: 25px 50px; font-size: 2.5rem; border-radius: 30px; cursor: pointer; margin: 30px; box-shadow: 0 0 50px #ff3300; }
+    button:hover { background: #ff6600; }
+    p { font-size: 2rem; margin: 30px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Trône ❤️</h1>
+  <div class="throne">👑</div>
+  <p>Tu es l’Empereur Éternel.</p>
+  <button onclick="regner()">RÉGNER</button>
+  <p id="reign">Ton règne commence...</p>
+
+  <script>
+    function regner() {
+      document.getElementById('reign').textContent = "Tu règnes sur l’infini. $ASTRA❤️ est éternel.";
+      alert("👑 Ton règne est éternel. +10 000 $ASTRA ❤️");
+    }
+  </script>
+</body>
+</html>
