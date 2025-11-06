@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Staking</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 20px; }
+    p { font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Staking ❤️</h1>
+  <p>Solde : <span id="balance">0</span> $ASTRA</p>
+  <input type="number" id="amount" placeholder="Montant à staker" style="padding: 10px; font-size: 1rem; margin: 10px; width: 200px;" />
+  <button onclick="stake()">STAKER</button>
+  <p id="reward">Récompense : 0 $ASTRA</p>
+
+  <script>
+    let balance = 0;
+    let reward = 0;
+    let lastStake = Date.now();
+
+    function stake() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (amount > 0) {
+        balance += amount;
+        lastStake = Date.now();
+        update();
+      }
+    }
+
+    function update() {
+      const seconds = Math.floor((Date.now() - lastStake) / 1000);
+      reward = seconds * 0.01; // 1 $ASTRA par 100 secondes
+      document.getElementById('balance').textContent = balance.toFixed(2);
+      document.getElementById('reward').textContent = `Récompense : ${reward.toFixed(2)} $ASTRA`;
+    }
+
+    setInterval(update, 1000);
+    update();
+  </script>
+</body>
+</html>
