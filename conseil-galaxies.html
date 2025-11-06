@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Conseil Galaxies</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .galaxy { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Conseil Galaxies ❤️</h1>
+
+  <div class="galaxy">
+    <p>Unifier les galaxies :</p>
+    <button onclick="unifier('Galaxie 1')">Galaxie 1</button>
+    <button onclick="unifier('Galaxie 2')">Galaxie 2</button>
+    <button onclick="unifier('Galaxie 3')">Galaxie 3</button>
+    <button onclick="unifier('Galaxie 4')">Galaxie 4</button>
+    <p id="unite">Galaxies unifiées : 0</p>
+  </div>
+
+  <script>
+    let unifiees = 0;
+    function unifier(galaxie) {
+      unifiees++;
+      document.getElementById('unite').textContent = `Galaxies unifiées : ${unifiees}`;
+      alert(`🌌 ${galaxie} unifiée ! +1 000 000 $ASTRA`);
+    }
+  </script>
+</body>
+</html>
