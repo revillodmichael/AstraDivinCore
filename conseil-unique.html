@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Conseil Unique</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .decret { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Conseil Unique ❤️</h1>
+
+  <div class="decret">
+    <p>Proclame un décret :</p>
+    <button onclick="decreter('Créer 1 million $ASTRA')">Créer 1 million $ASTRA</button>
+    <button onclick="decreter('Faire évoluer le dragon')">Faire évoluer le dragon</button>
+    <button onclick="decreter('Ouvrir Galaxie 3')">Ouvrir Galaxie 3</button>
+    <p id="decret">Décret : ...</p>
+  </div>
+
+  <script>
+    function decreter(texte) {
+      document.getElementById('decret').textContent = `Décret : ${texte}`;
+      alert(`📜 Décret proclamé : ${texte} !`);
+    }
+  </script>
+</body>
+</html>
