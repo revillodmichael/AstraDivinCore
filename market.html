@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Market</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .item { background: #111827; padding: 20px; margin: 20px auto; width: 60%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #ff3300; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #ff6600; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Market ❤️</h1>
+
+  <div class="item">
+    <p>Pet Phoenix (Bonheur +1000)</p>
+    <button onclick="buy('Pet Phoenix', 5000)">Acheter - 5000 $ASTRA</button>
+  </div>
+
+  <div class="item">
+    <p>Super Boost ( +1000 $ASTRA/clic )</p>
+    <button onclick="buy('Super Boost', 10000)">Acheter - 10000 $ASTRA</button>
+  </div>
+
+  <div class="item">
+    <p>Champ Éternel (100% stable)</p>
+    <button onclick="buy('Champ Éternel', 15000)">Acheter - 15000 $ASTRA</button>
+  </div>
+
+  <p id="balance">Ton solde : 208000 $ASTRA</p>
+
+  <script>
+    let balance = 208000;
+
+    function buy(item, price) {
+      if (balance >= price) {
+        balance -= price;
+        document.getElementById('balance').textContent = `Ton solde : ${balance} $ASTRA`;
+        alert(`Acheté : ${item} !`);
+      } else {
+        alert("Pas assez de $ASTRA !");
+      }
+    }
+  </script>
+</body>
+</html>
