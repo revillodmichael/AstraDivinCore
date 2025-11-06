@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Phoenix</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    canvas { border-radius: 20px; box-shadow: 0 0 30px #0ff; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 20px; }
+    #happiness { font-size: 1.5rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Phoenix ❤️</h1>
+  <canvas id="pet" width="300" height="300"></canvas>
+  <button onclick="feed()">Nourrir</button>
+  <button onclick="play()">Jouer</button>
+  <p id="happiness">Bonheur : 500</p>
+
+  <script>
+    const canvas = document.getElementById('pet');
+    const ctx = canvas.getContext('2d');
+    let happiness = 500;
+    let lastFed = Date.now();
+
+    function drawPhoenix() {
+      ctx.clearRect(0, 0, 300, 300);
+      const color = happiness > 700 ? '#ff0' : happiness > 400 ? '#0ff' : '#ff3300';
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(150, 150, 80, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#000';
+      ctx.font = '30px Arial';
+      ctx.fillText('🔥', 130, 170);
+    }
+
+    function feed() {
+      if (Date.now() - lastFed > 5000) {
+        happiness = Math.min(1000, happiness + 50);
+        lastFed = Date.now();
+        update();
+      }
+    }
+
+    function play() {
+      happiness = Math.min(1000, happiness + 30);
+      update();
+    }
+
+    function update() {
+      document.getElementById('happiness').textContent = `Bonheur : ${happiness}`;
+      drawPhoenix();
+    }
+
+    drawPhoenix();
+    setInterval(() => {
+      happiness = Math.max(0, happiness - 1);
+      update();
+    }, 1000);
+  </script>
+</body>
+</html>
