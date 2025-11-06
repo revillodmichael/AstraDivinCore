@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Alliance</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .member { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #ff3300; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #ff6600; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Alliance ❤️</h1>
+
+  <div class="member">
+    <p>Recruter 1 légion (100 membres)</p>
+    <button onclick="recruit('1 légion', 10000)">Recruter - 10000 $ASTRA</button>
+  </div>
+
+  <div class="member">
+    <p>Recruter 1 flotte (1000 membres)</p>
+    <button onclick="recruit('1 flotte', 50000)">Recruter - 50000 $ASTRA</button>
+  </div>
+
+  <div class="member">
+    <p>Recruter 1 empire (10000 membres)</p>
+    <button onclick="recruit('1 empire', 100000)">Recruter - 100000 $ASTRA</button>
+  </div>
+
+  <p id="army">Armée : 0 membres</p>
+  <p id="balance">Ton solde : 143000 $ASTRA</p>
+
+  <script>
+    let army = 0;
+    let balance = 143000;
+
+    function recruit(unit, cost) {
+      if (balance >= cost) {
+        balance -= cost;
+        const members = unit === '1 légion' ? 100 : unit === '1 flotte' ? 1000 : 10000;
+        army += members;
+        document.getElementById('army').textContent = `Armée : ${army} membres`;
+        document.getElementById('balance').textContent = `Ton solde : ${balance} $ASTRA`;
+        alert(`Recruté : ${unit} ! +${members} membres`);
+      } else {
+        alert("Pas assez de $ASTRA !");
+      }
+    }
+  </script>
+</body>
+</html>
