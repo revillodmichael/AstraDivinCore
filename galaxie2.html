@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Galaxie 2</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 4rem; text-shadow: 0 0 20px #0ff; }
+    .star { position: absolute; width: 5px; height: 5px; background: #0ff; border-radius: 50%; box-shadow: 0 0 10px #0ff; animation: twinkle 2s infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+    button { background: #6366f1; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; cursor: pointer; margin: 20px; }
+    button:hover { background: #4f46e5; }
+    p { font-size: 1.8rem; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Galaxie 2 ❤️</h1>
+  <p>Bienvenue dans la deuxième galaxie.</p>
+  <button onclick="explorer()">EXPLORER</button>
+  <p id="discovery">Découverte : ...</p>
+
+  <script>
+    function explorer() {
+      const decouvertes = [
+        "Une planète de cristal pur",
+        "Un soleil qui chante",
+        "Une flotte de 1000 vaisseaux $ASTRA",
+        "Un dragon cosmique allié",
+        "Un trésor de 1 million $ASTRA"
+      ];
+      const index = Math.floor(Math.random() * decouvertes.length);
+      document.getElementById('discovery').textContent = `Découverte : ${decouvertes[index]}`;
+    }
+
+    // Génère des étoiles
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
