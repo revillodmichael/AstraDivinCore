@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Forge</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .weapon { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    input { padding: 15px; font-size: 1.5rem; width: 60%; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #arsenal { margin-top: 30px; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Forge ❤️</h1>
+  <div class="weapon">
+    <input type="text" id="arme" placeholder="Nom de ton arme..." />
+    <button onclick="forger()">FORGER</button>
+    <div id="arsenal"></div>
+  </div>
+
+  <script>
+    let arsenal = [];
+
+    function forger() {
+      const input = document.getElementById('arme');
+      const nom = input.value.trim();
+      if (nom) {
+        arsenal.push(nom);
+        input.value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const list = document.getElementById('arsenal');
+      list.innerHTML = '';
+      arsenal.forEach(a => {
+        const p = document.createElement('p');
+        p.textContent = `⚔️ ${a}`;
+        list.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
