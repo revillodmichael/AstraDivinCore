@@ -1,58 +1,32 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Astra Champ</title>
-  <style>
-    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
-    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
-    canvas { border-radius: 20px; box-shadow: 0 0 30px #0ff; margin: 20px auto; }
-    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 20px; }
-    #energy { font-size: 1.5rem; margin: 20px; }
-  </style>
-</head>
-<body>
-  <h1>Astra Champ ❤️</h1>
-  <canvas id="field" width="600" height="600"></canvas>
-  <button onclick="boost()">BOOST ÉNERGIE</button>
-  <p id="energy">Énergie : 50%</p>
+<script>
+  const canvas = document.getElementById('field');
+  const ctx = canvas.getContext('2d');
+  let energy = 100; // DÉPART À 100 %
+  let time = 0;
 
-  <script>
-    const canvas = document.getElementById('field');
-    const ctx = canvas.getContext('2d');
-    let energy = 50;
-    let time = 0;
+  function drawField() {
+    ctx.clearRect(0, 0, 600, 600);
+    const gradient = ctx.createRadialGradient(300, 300, 0, 300, 300, 300);
+    gradient.addColorStop(0, `rgba(0, 255, 255, ${energy/100})`);
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 600, 600);
 
-    function drawField() {
-      ctx.clearRect(0, 0, 600, 600);
-      const gradient = ctx.createRadialGradient(300, 300, 0, 300, 300, 300);
-      gradient.addColorStop(0, `rgba(0, 255, 255, ${energy/100})`);
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 600, 600);
+    ctx.font = 'bold 80px Arial';
+    ctx.fillStyle = `rgba(0, 255, 255, ${energy/100})`;
+    ctx.textAlign = 'center';
+    ctx.fillText('NRL', 300, 340);
+  }
 
-      ctx.font = 'bold 80px Arial';
-      ctx.fillStyle = `rgba(0, 255, 255, ${energy/100})`;
-      ctx.textAlign = 'center';
-      ctx.fillText('NRL', 300, 340);
-    }
-
-    function boost() {
-      energy = Math.min(100, energy + 10);
-      update();
-    }
-
-    function update() {
-      document.getElementById('energy').textContent = `Énergie : ${energy}%`;
-      drawField();
-    }
-
-    setInterval(() => {
-      energy = Math.max(0, energy - 0.1);
-      update();
-    }, 100);
-
+  function boost() {
+    energy = 100; // TOUJOURS 100 %
     update();
-  </script>
-</body>
-</html>
+  }
+
+  function update() {
+    document.getElementById('energy').textContent = `Énergie : ${energy}%`;
+    drawField();
+  }
+
+  update(); // 100 % dès le départ
+</script>
