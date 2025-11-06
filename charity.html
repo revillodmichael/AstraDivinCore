@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Charity</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .cause { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    button { background: #ff3300; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #ff6600; }
+    p { font-size: 1.5rem; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Astra Charity ❤️</h1>
+
+  <div class="cause">
+    <p>Sauver les phénix (1 $ASTRA = 1 vie)</p>
+    <button onclick="donate('Sauver les phénix', 1000)">Donner 1000 $ASTRA</button>
+  </div>
+
+  <div class="cause">
+    <p>Planter des étoiles (1 $ASTRA = 1 étoile)</p>
+    <button onclick="donate('Planter des étoiles', 5000)">Donner 5000 $ASTRA</button>
+  </div>
+
+  <div class="cause">
+    <p>Éduquer les empereurs (1 $ASTRA = 1 leçon)</p>
+    <button onclick="donate('Éduquer les empereurs', 10000)">Donner 10000 $ASTRA</button>
+  </div>
+
+  <p id="karma">Karma : 0</p>
+  <p id="balance">Ton solde : 143000 $ASTRA</p>
+
+  <script>
+    let karma = 0;
+    let balance = 143000;
+
+    function donate(cause, amount) {
+      if (balance >= amount) {
+        balance -= amount;
+        karma += amount / 100;
+        document.getElementById('karma').textContent = `Karma : ${karma.toFixed(0)}`;
+        document.getElementById('balance').textContent = `Ton solde : ${balance} $ASTRA`;
+        alert(`Don fait : ${cause} ! +${amount / 100} karma`);
+      } else {
+        alert("Pas assez de $ASTRA !");
+      }
+    }
+  </script>
+</body>
+</html>
