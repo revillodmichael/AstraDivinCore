@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astra Jardin</title>
+  <style>
+    body { background: #000; color: #0ff; text-align: center; font-family: Arial; padding-top: 10vh; }
+    h1 { font-size: 3rem; text-shadow: 0 0 10px #0ff; }
+    .seed { background: #111827; padding: 20px; margin: 20px auto; width: 70%; border-radius: 15px; box-shadow: 0 0 20px #0ff; }
+    input { padding: 15px; font-size: 1.5rem; width: 60%; margin: 20px; border-radius: 10px; background: #1f2937; color: white; }
+    button { background: #6366f1; color: white; padding: 15px 30px; font-size: 1.5rem; border-radius: 10px; cursor: pointer; margin: 10px; }
+    button:hover { background: #4f46e5; }
+    #garden { margin-top: 30px; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Astra Jardin ❤️</h1>
+  <div class="seed">
+    <input type="text" id="etoile" placeholder="Nom de ton étoile..." />
+    <button onclick="planter()">PLANTER</button>
+    <div id="garden"></div>
+  </div>
+
+  <script>
+    let etoiles = [];
+
+    function planter() {
+      const input = document.getElementById('etoile');
+      const nom = input.value.trim();
+      if (nom) {
+        etoiles.push(nom);
+        input.value = '';
+        afficher();
+      }
+    }
+
+    function afficher() {
+      const garden = document.getElementById('garden');
+      garden.innerHTML = '';
+      etoiles.forEach(e => {
+        const p = document.createElement('p');
+        p.textContent = `⭐ ${e}`;
+        garden.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
